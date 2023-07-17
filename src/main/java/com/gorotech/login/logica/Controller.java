@@ -21,8 +21,10 @@ public class Controller {
             if(usu.getNameUser().equals(user)){
                 if(usu.getPasswordUser().equals(pass)){
                    message= "Correct username and password, welcome" ;
+                   return message;
                 }else{
                     message="Incorrect password";
+                    return message;
                           
                 }
             }else{
