@@ -1,19 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.gorotech.login.igu;
 
-/**
- *
- * @author xenieze
- */
+import com.gorotech.login.logica.Controller;
+
 public class Principal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Principal
-     */
+    Controller control = null;
+
     public Principal() {
+        control = new Controller();
         initComponents();
     }
 
@@ -54,6 +48,11 @@ public class Principal extends javax.swing.JFrame {
 
         btnLogin.setFont(new java.awt.Font("Ubuntu Light", 0, 18)); // NOI18N
         btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
 
         btnClear.setFont(new java.awt.Font("Ubuntu Light", 0, 18)); // NOI18N
         btnClear.setText("Clear");
@@ -144,6 +143,13 @@ public class Principal extends javax.swing.JFrame {
         txtPassword.setText("");
         txtMessage.setText("");
     }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        String user = txtUser.getText();
+        String pass = txtPassword.getText();
+        String menssage = control.validateUser(user, pass);
+        txtMessage.setText(menssage);
+    }//GEN-LAST:event_btnLoginActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

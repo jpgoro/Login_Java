@@ -1,3 +1,9 @@
+/home/xenieze/NetBeansProjects/login/src/main/java/com/gorotech/login/persistencia/exceptions/NonexistentEntityException.java
+/home/xenieze/NetBeansProjects/login/src/main/java/com/gorotech/login/persistencia/exceptions/PreexistingEntityException.java
+/home/xenieze/NetBeansProjects/login/src/main/java/com/gorotech/login/persistencia/exceptions/IllegalOrphanException.java
+/home/xenieze/NetBeansProjects/login/src/main/java/com/gorotech/login/persistencia/PersistenceController.java
+/home/xenieze/NetBeansProjects/login/src/main/java/com/gorotech/login/logica/Controller.java
 /home/xenieze/NetBeansProjects/login/src/main/java/com/gorotech/login/Login.java
 /home/xenieze/NetBeansProjects/login/src/main/java/com/gorotech/login/logica/User.java
 /home/xenieze/NetBeansProjects/login/src/main/java/com/gorotech/login/igu/Principal.java
+/home/xenieze/NetBeansProjects/login/src/main/java/com/gorotech/login/persistencia/UserJpaController.java
