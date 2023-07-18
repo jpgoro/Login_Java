@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User implements Serializable {
@@ -13,14 +14,17 @@ public class User implements Serializable {
     private int id;
     private String nameUser;
     private String passwordUser;
+    @OneToOne
+    private Rol aRol;
 
     public User() {
     }
 
-    public User(int id, String nameUser, String passwordUser) {
+    public User(int id, String nameUser, String passwordUser, Rol aRol) {
         this.id = id;
         this.nameUser = nameUser;
         this.passwordUser = passwordUser;
+        this.aRol = aRol;
     }
 
     public int getId() {
