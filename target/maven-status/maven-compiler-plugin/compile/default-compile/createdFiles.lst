@@ -1,11 +1,14 @@
 com/gorotech/login/igu/Principal$1.class
 com/gorotech/login/logica/Controller.class
+com/gorotech/login/logica/Rol.class
 com/gorotech/login/igu/Principal$2.class
 com/gorotech/login/persistencia/exceptions/NonexistentEntityException.class
 com/gorotech/login/persistencia/UserJpaController.class
 com/gorotech/login/Login.class
+com/gorotech/login/logica/Rol_.class
 com/gorotech/login/logica/User_.class
 com/gorotech/login/persistencia/exceptions/IllegalOrphanException.class
+com/gorotech/login/persistencia/RolJpaController.class
 com/gorotech/login/igu/Principal.class
 com/gorotech/login/persistencia/exceptions/PreexistingEntityException.class
 com/gorotech/login/logica/User.class

@@ -1,12 +1,12 @@
 
 package com.gorotech.login;
 
-import com.gorotech.login.igu.Principal;
+import com.gorotech.login.igu.InitialLogin;
 
 public class Login {
 
     public static void main(String[] args) {
-        Principal princ = new Principal();
+        InitialLogin princ = new InitialLogin();
         princ.setVisible(true);
         princ.setLocationRelativeTo(null);
     }

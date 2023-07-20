@@ -1,6 +1,7 @@
 
 package com.gorotech.login.logica;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,13 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Rol {
+public class Rol implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String rolName;
     private String description;
-    @OneToMany
+    @OneToMany(mappedBy = "aRol")
     private List<User> UsersList;
 
     public Rol() {
@@ -25,6 +26,14 @@ public class Rol {
         this.id = id;
         this.rolName = rolName;
         this.description = description;
+        this.UsersList = UsersList;
+    }
+
+    public List<User> getUsersList() {
+        return UsersList;
+    }
+
+    public void setUsersList(List<User> UsersList) {
         this.UsersList = UsersList;
     }
 

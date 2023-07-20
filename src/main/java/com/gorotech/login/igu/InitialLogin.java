@@ -2,11 +2,11 @@ package com.gorotech.login.igu;
 
 import com.gorotech.login.logica.Controller;
 
-public class Principal extends javax.swing.JFrame {
+public class InitialLogin extends javax.swing.JFrame {
 
     Controller control = null;
 
-    public Principal() {
+    public InitialLogin() {
         control = new Controller();
         initComponents();
     }
@@ -147,8 +147,25 @@ public class Principal extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         String user = txtUser.getText();
         String pass = txtPassword.getText();
-        String menssage = control.validateUser(user, pass);
-        txtMessage.setText(menssage);
+        boolean ok = control.validateUser(user, pass);
+        
+        if(ok == true){
+            String rol = control.validarRol(user);
+            if(rol.equals("admin")){
+                AdminPrinc  sAdmin = new AdminPrinc(control);
+                sAdmin.setVisible(true);
+                sAdmin.setLocationRelativeTo(null);
+            }
+            if(rol.equals("user")){
+                UserPrinc sUser = new UserPrinc(control);
+                sUser.setVisible(true);
+                sUser.setLocationRelativeTo(null);
+            }
+        }else{
+        txtMessage.setText("Usuario o contraseña incorrectos");
+            
+        }
+        
     }//GEN-LAST:event_btnLoginActionPerformed
 
 
