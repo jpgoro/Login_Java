@@ -153,14 +153,14 @@ public class InitialLogin extends javax.swing.JFrame {
         if(usr != null){
             String rol = usr.getaRol().getRolName();
             if(rol.equals("admin")){
-                AdminPrinc  sAdmin = new AdminPrinc(control);
+                AdminPrinc  sAdmin = new AdminPrinc(control,usr);
                 sAdmin.setVisible(true);
                 sAdmin.setLocationRelativeTo(null);
                 //close screen
                 this.dispose();
             }
             if(rol.equals("user")){
-                UserPrinc sUser = new UserPrinc(control);
+                UserPrinc sUser = new UserPrinc(control,usr);
                 sUser.setVisible(true);
                 sUser.setLocationRelativeTo(null);
                 this.dispose();

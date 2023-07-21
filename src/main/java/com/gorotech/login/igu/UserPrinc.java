@@ -2,13 +2,16 @@
 package com.gorotech.login.igu;
 
 import com.gorotech.login.logica.Controller;
+import com.gorotech.login.logica.User;
 
 public class UserPrinc extends javax.swing.JFrame {
 
     Controller control;
-    public UserPrinc(Controller control) {
+    User usr;
+    public UserPrinc(Controller control, User usr) {
         initComponents();
         this.control = control;
+        this.usr = usr;
     }
 
     /**
@@ -29,6 +32,11 @@ public class UserPrinc extends javax.swing.JFrame {
         txtNameUser = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Ubuntu Light", 1, 36)); // NOI18N
         jLabel1.setText("Sistema Administrador de Usuarios");
@@ -51,6 +59,11 @@ public class UserPrinc extends javax.swing.JFrame {
 
         btnExit.setFont(new java.awt.Font("Ubuntu Light", 0, 18)); // NOI18N
         btnExit.setText("Salir");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
 
         txtNameUser.setEditable(false);
         txtNameUser.setFont(new java.awt.Font("Liberation Sans", 0, 14)); // NOI18N
@@ -76,9 +89,9 @@ public class UserPrinc extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(txtNameUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNameUser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -103,6 +116,14 @@ public class UserPrinc extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.txtNameUser.setText(usr.getNameUser());
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnExitActionPerformed
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
