@@ -36,4 +36,8 @@ public class Controller {
         return usr;
     }
 
+    public List<User> bringUsers() {
+       return persistenceCon.bringUsers();
+    }
+
 }

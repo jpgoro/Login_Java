@@ -3,6 +3,8 @@ package com.gorotech.login.igu;
 
 import com.gorotech.login.logica.Controller;
 import com.gorotech.login.logica.User;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 public class UserPrinc extends javax.swing.JFrame {
 
@@ -26,7 +28,7 @@ public class UserPrinc extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        UsersTable = new javax.swing.JTable();
         btnRefreshTable = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         txtNameUser = new javax.swing.JTextField();
@@ -41,7 +43,7 @@ public class UserPrinc extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Ubuntu Light", 1, 36)); // NOI18N
         jLabel1.setText("Sistema Administrador de Usuarios");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        UsersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -52,7 +54,7 @@ public class UserPrinc extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(UsersTable);
 
         btnRefreshTable.setFont(new java.awt.Font("Ubuntu Light", 0, 18)); // NOI18N
         btnRefreshTable.setText("Recargar Tabla");
@@ -118,20 +120,53 @@ public class UserPrinc extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.txtNameUser.setText(usr.getNameUser());
+        loadTable();
     }//GEN-LAST:event_formWindowOpened
-
+    
+    private void loadTable() {
+        //Define the model we want the table to have
+        DefaultTableModel tableModel = new DefaultTableModel(){
+        //Makes rows and columns uneditable
+        public boolean IsCellEditable(int row, int colum){
+            return false;
+        }
+        };
+        //Column names are established
+        String titles[] = {"Id","User","Rol"};
+        //Assigns the names to the model
+        tableModel.setColumnIdentifiers(titles);
+        //Assingns the model to the table
+        
+        //Bring the list of users from the database
+        List<User> UsersList = control.bringUsers();
+        //Checks if the list is empty
+        if(UsersList!=null){
+            //Go through the list
+            for(User usu : UsersList){
+                Object[] obj = {usu.getId(),usu.getNameUser(),usu.getaRol().getRolName()};
+                //Adds it as a row to the table
+                tableModel.addRow(obj);
+            }
+        }
+        
+        UsersTable.setModel(tableModel);
+        
+    }
+    
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnExitActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable UsersTable;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnRefreshTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtNameUser;
     // End of variables declaration//GEN-END:variables
+
+
 }
