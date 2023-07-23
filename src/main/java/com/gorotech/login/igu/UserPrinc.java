@@ -58,6 +58,11 @@ public class UserPrinc extends javax.swing.JFrame {
 
         btnRefreshTable.setFont(new java.awt.Font("Ubuntu Light", 0, 18)); // NOI18N
         btnRefreshTable.setText("Recargar Tabla");
+        btnRefreshTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshTableActionPerformed(evt);
+            }
+        });
 
         btnExit.setFont(new java.awt.Font("Ubuntu Light", 0, 18)); // NOI18N
         btnExit.setText("Salir");
@@ -148,7 +153,7 @@ public class UserPrinc extends javax.swing.JFrame {
                 tableModel.addRow(obj);
             }
         }
-        
+        //2:09:34
         UsersTable.setModel(tableModel);
         
     }
@@ -156,6 +161,11 @@ public class UserPrinc extends javax.swing.JFrame {
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnRefreshTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshTableActionPerformed
+        loadTable();
+        //02:10:12
+    }//GEN-LAST:event_btnRefreshTableActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

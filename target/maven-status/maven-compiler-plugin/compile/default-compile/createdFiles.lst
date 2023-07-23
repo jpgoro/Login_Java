@@ -13,4 +13,5 @@ com/gorotech/login/igu/UserPrinc$3.class
 com/gorotech/login/persistencia/RolJpaController.class
 com/gorotech/login/persistencia/exceptions/PreexistingEntityException.class
 com/gorotech/login/logica/User.class
+com/gorotech/login/igu/UserPrinc$4.class
 com/gorotech/login/persistencia/PersistenceController.class
