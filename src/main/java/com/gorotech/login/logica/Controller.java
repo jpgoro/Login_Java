@@ -40,4 +40,8 @@ public class Controller {
        return persistenceCon.bringUsers();
     }
 
+    public List<Rol> bringRoles() {
+        return persistenceCon.bringRoles();
+    }
+
 }
