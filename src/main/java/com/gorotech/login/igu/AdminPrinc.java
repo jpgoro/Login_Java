@@ -191,6 +191,7 @@ public class AdminPrinc extends javax.swing.JFrame {
        usuReg.setVisible(true);
        usuReg.setLocationRelativeTo(null);
        this.dispose();
+       //2:29:57
     }//GEN-LAST:event_btnCreateUserActionPerformed
 
 

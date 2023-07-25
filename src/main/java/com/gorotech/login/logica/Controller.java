@@ -44,4 +44,36 @@ public class Controller {
         return persistenceCon.bringRoles();
     }
 
+    public void createUser(String user, String pass, String rol) {
+        User usu = new User();
+        usu.setNameUser(user);
+        usu.setPasswordUser(pass);
+        
+        Rol rolFound = new Rol();
+        rolFound = this.bringRol(rol);
+        if(rolFound!=null){
+            usu.setaRol(rolFound);
+        }
+        int id = this.bringLastIdUsers();
+        usu.setId(id+1);
+        persistenceCon.createUser(usu);
+    }
+
+    private Rol bringRol(String rol) {
+       List<Rol> listRoles = persistenceCon.bringRoles();
+       
+       for(Rol aRol:listRoles){
+           if(aRol.getRolName().equals(rol)){
+               return aRol;
+           }
+       }
+       return null;
+    }
+
+    private int bringLastIdUsers() {
+        List<User> listUsers = this.bringUsers();
+        User usu = listUsers.get(listUsers.size()-1);
+        return usu.getId();
+    }
+
 }

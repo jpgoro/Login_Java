@@ -1,3 +1,4 @@
+com/gorotech/login/igu/UserRegistration$3.class
 com/gorotech/login/logica/Rol.class
 com/gorotech/login/igu/UserRegistration$1.class
 com/gorotech/login/Login.class
@@ -7,6 +8,7 @@ com/gorotech/login/igu/AdminPrinc$1.class
 com/gorotech/login/igu/AdminPrinc$3.class
 com/gorotech/login/persistencia/exceptions/PreexistingEntityException.class
 com/gorotech/login/igu/UserPrinc$4.class
+com/gorotech/login/igu/UserRegistration$2.class
 com/gorotech/login/igu/UserRegistration.class
 com/gorotech/login/logica/Controller.class
 com/gorotech/login/igu/AdminPrinc$2.class

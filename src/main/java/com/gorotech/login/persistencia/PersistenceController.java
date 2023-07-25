@@ -18,6 +18,12 @@ public class PersistenceController {
         //SELECT * FROM Rol
     }
 
+    public void createUser(User usu) {
+        usuJpa.create(usu);
+    }
+
+    
+
     
     
 }
