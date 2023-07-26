@@ -1,20 +1,24 @@
+
 package com.gorotech.login.igu;
 
 import com.gorotech.login.logica.Controller;
 import com.gorotech.login.logica.Rol;
+import com.gorotech.login.logica.User;
 import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-public class UserRegistration extends javax.swing.JFrame {
-
+public class EditionUser extends javax.swing.JFrame {
+    int id_user;
     Controller control;
-
-    public UserRegistration(Controller control) {
+    User usu;
+    public EditionUser(Controller control, int id_user) {
         initComponents();
+        this.id_user = id_user;
         this.control = control;
     }
 
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -38,7 +42,7 @@ public class UserRegistration extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Ubuntu Light", 1, 36)); // NOI18N
-        jLabel1.setText("Alta de Usuarios");
+        jLabel1.setText("Editar Usuarios");
 
         jLabel2.setFont(new java.awt.Font("Ubuntu Light", 0, 18)); // NOI18N
         jLabel2.setText("Nombre de Usuario:");
@@ -95,7 +99,7 @@ public class UserRegistration extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(109, 109, 109)
                         .addComponent(jLabel1)))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,31 +139,47 @@ public class UserRegistration extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        List<Rol> listRoles = control.bringRoles();
-        if (listRoles != null) {
-            for (Rol rol : listRoles) {
-                cmbRol.addItem(rol.getRolName());
-            }
-        }
-    }//GEN-LAST:event_formWindowOpened
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        String user = txtUser.getText();
+        String pass = txtPass.getText();
+        String rol = (String)cmbRol.getSelectedItem();
+        
+        control.editUser(usu,user,pass,rol);
+        
+        showMessage("User edited correctly", "Info", "successful user edition");
+        this.dispose();
+
+    }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         txtUser.setText("");
         txtPass.setText("");
     }//GEN-LAST:event_btnClearActionPerformed
 
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        String user = txtUser.getText();
-        String pass = txtPass.getText();
-        String rol = (String)cmbRol.getSelectedItem();
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        //Bring the user
+        usu = control.bringUser(id_user);
         
-        control.createUser(user,pass,rol);
+        //load data on the interface
+        txtUser.setText(usu.getNameUser());
+        txtPass.setText(usu.getPasswordUser());
         
-        showMessage("User created successfully", "Info", "successful user creation");
-                
-    }//GEN-LAST:event_btnSaveActionPerformed
-    
+        //load roles of generic form
+        List<Rol> listRoles = control.bringRoles();
+        if (listRoles != null) {
+            for (Rol rol : listRoles) {
+                cmbRol.addItem(rol.getRolName());
+            }
+        }
+        //Mark / select the role that the user has
+        String rol = usu.getaRol().getRolName();
+        int cantItems = cmbRol.getItemCount();
+        for(int i=0;i<cantItems;i++){
+            if(String.valueOf(cmbRol.getItemAt(i)).equals(rol)){
+               cmbRol.setSelectedIndex(i);
+            }
+        }
+    }//GEN-LAST:event_formWindowOpened
     public void showMessage(String message, String type, String title){
         JOptionPane optionPane = new JOptionPane(message);
         if(type.equals("Info")){

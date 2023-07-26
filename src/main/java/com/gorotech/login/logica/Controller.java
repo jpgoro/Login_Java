@@ -76,4 +76,25 @@ public class Controller {
         return usu.getId();
     }
 
+    public void deleteUser(int id_user) {
+        persistenceCon.deleteUser(id_user);
+    }
+
+    public User bringUser(int id_user) {
+        
+       return persistenceCon.bringUser(id_user);
+        
+    }
+
+    public void editUser(User usu, String user, String pass, String rol) {
+        usu.setNameUser(user);
+        usu.setPasswordUser(pass);
+        Rol rolFound = new Rol();
+        rolFound = this.bringRol(rol);
+        if(rolFound!=null){
+            usu.setaRol(rolFound);
+        }
+        persistenceCon.editUser(usu);
+    }
+
 }
